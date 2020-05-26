@@ -28,9 +28,8 @@ const organizingFiles = (fileExt, curFile) => {
 }
 
 
-const gettingFiles = async() => {
-    let done = false
-    let m = new Promise((resolve, reject) => {
+const gettingFiles = () => {
+
         fs.readdir(downloadDir, ((err, files) => {
             if(err) {
                 return console.log('Error reading file ', err)
@@ -43,19 +42,12 @@ const gettingFiles = async() => {
                     done = true
                 }
             })
-            if(done){
-                console.log('finished')
-                resolve('done')
-            }
     }))
-
-    })
-    return m
 }
 
 
 const watchingFolder = () => {
-    fs.watch(downloadsFile, async(event, filename) => {
+    fs.watch(downloadsFile, (event, filename) => {
         if (filename) {
             gettingFiles()
         }

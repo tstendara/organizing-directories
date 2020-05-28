@@ -1,0 +1,24 @@
+{
+  "name": "organizingfolders",
+  "version": "1.0.0",
+  "description": "",
+  "main": "movingFiles.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tstendara/organizing-directories.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tstendara/organizing-directories/issues"
+  },
+  "homepage": "https://github.com/tstendara/organizing-directories#readme",
+  "dependencies": {
+    "fs": "0.0.1-security",
+    "log-timestamp": "^0.3.0",
+    "path": "^0.12.7"
+  }
+}

@@ -11,12 +11,12 @@ const appsDir = path.join('/Applications/')
 const fontsDir = path.join(__dirname + '/fonts/')
 const iconsDir = path.join(__dirname + '/icons/')
 const movieDir = path.join(__dirname + '/Movies/')
-const validExtension = ['app', 'ttf', 'zip', 'jpg', 'png', 'ico', 'dmg', 'art']
+const validExtension = ['app', 'ttf', 'zip', 'jpg', 'png', 'ico', 'dmg']
 
 const organizingFiles = (fileExt, curFile) => {
     if(fileExt === 'app' || fileExt === 'dmg'){
         fs.rename(downloadDir + curFile, appsDir + curFile, (() => {}))
-    }else if(fileExt === 'jpg' || fileExt === 'png' || fileExt === 'art') {
+    }else if(fileExt === 'jpg' || fileExt === 'png') {
         fs.rename(downloadDir + curFile, picsDir + curFile, (() => {})) 
     }else if (fileExt === 'ttf') {
         fs.rename(downloadDir + curFile, fontsDir + curFile, (() => {}))
@@ -27,9 +27,7 @@ const organizingFiles = (fileExt, curFile) => {
     }
 }
 
-
 const gettingFiles = () => {
-
         fs.readdir(downloadDir, ((err, files) => {
             if(err) {
                 return console.log('Error reading file ', err)
@@ -45,7 +43,6 @@ const gettingFiles = () => {
     }))
 }
 
-
 const watchingFolder = () => {
     fs.watch(downloadsFile, (event, filename) => {
         if (filename) {
@@ -54,4 +51,3 @@ const watchingFolder = () => {
     });    
 }
 watchingFolder()
-

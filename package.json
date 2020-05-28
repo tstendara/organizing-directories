@@ -4,7 +4,8 @@
   "description": "",
   "main": "movingFiles.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha & node movingFiles.js",
+    "start": "node movingFiles.js"
   },
   "repository": {
     "type": "git",
@@ -17,8 +18,11 @@
   },
   "homepage": "https://github.com/tstendara/organizing-directories#readme",
   "dependencies": {
+    "expect": "^26.0.1",
     "fs": "0.0.1-security",
     "log-timestamp": "^0.3.0",
+    "mocha": "^7.2.0",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {}
 }

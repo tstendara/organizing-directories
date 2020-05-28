@@ -1,8 +1,8 @@
 const path = require('path')
 const fs = require('fs')
 require('log-timestamp');
-const downloadsFile = './Downloads';
-const downloadDir = path.join(__dirname, 'Downloads/')
+const downloadsFile = './Hola';
+const downloadDir = path.join(__dirname, 'Hola/')
 console.log(`Watching for file changes on ${downloadsFile}`);
 
 
@@ -37,7 +37,6 @@ const gettingFiles = () => {
                 // Check file extension to see if it can be filtered properly
                 if(validExtension.includes(fileExt)) {
                     organizingFiles(fileExt, curFile)
-                    done = true
                 }
             })
     }))

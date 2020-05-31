@@ -1,6 +1,6 @@
-const assert = require('assert');
-const expect = require('expect')
 const fs = require('fs')
+const { exec } = require('child_process');
+const mainDir = __dirname + '/dummy_download_file/' //keep note of the dir name
 
 const checkingDir = async(files) => {
   let found = false
@@ -12,33 +12,46 @@ const checkingDir = async(files) => {
   return found
 }
 
-describe('Array', function() {
-  const mainDir = __dirname + '/hola/' //keep note of the dir name
+const creatingFile = () =>  new Promise((resolve, reject) => {
+  fs.writeFile(mainDir + 'test.png',"", ((err) => {
+    if(err){ 
+      reject()
+    }else{
+      resolve("created")
+    }
+  }))
+})
+  
+const checkingFile = () => new Promise((resolve, reject) => {
+  setTimeout(function(){
+    fs.readdir(__dirname + '/Pictures/', (async(err, files) => {
+      if(err) {
+        reject()
+      }else{
+        console.log(files)
+        let found = await checkingDir(files) 
+        if(found){ resolve()}
+        else{ reject()}
+      }
+    }))
+  }, 
+  500)
+})
 
-  describe('creatingFile', () => {
-    it('Should create file', () => {
-      fs.writeFile(mainDir + 'test.png',"", ((err) => {
-        if(err){ 
-          assert.equal(err, null), console.log(err)
-        }else{
-          assert.equal(err, null)
-        }
-      }))
-    });
-
-    it("checking if file was moved to Pictures", () => {
-      this.timeout(100);
-
-      setTimeout(function () {
-        fs.readdir(__dirname + '/Pictures/', (async(err, files) => {
-         if(err) {
-          assert.equal(err, null), console.log(err)
-         }else{
-          let found = await checkingDir(files)
-          assert.equal(found, true)
-         }
-        }))
-      }, 100)
-    })
+const deletingFiles = () =>  new Promise((resolve, reject) => {
+  exec('mkdir test; ls', (err, stdout, stderr) => {
+    if (err) {
+      reject()
+    } else {
+    console.log(`stdout: ${stdout}`);
+    console.log(`stderr: ${stderr}`);
+    }
   });
-});
+})
+    
+const testing = () => {
+  creatingFile().then(_=> checkingFile().then(_ => deletingFiles()))
+}
+testing()
+
+  

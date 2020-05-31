@@ -4,7 +4,7 @@
   "description": "",
   "main": "movingFiles.js",
   "scripts": {
-    "test": "mocha & node movingFiles.js",
+    "test": "mocha & node dummy_movingFiles.js",
     "start": "node movingFiles.js"
   },
   "repository": {
@@ -18,10 +18,9 @@
   },
   "homepage": "https://github.com/tstendara/organizing-directories#readme",
   "dependencies": {
-    "expect": "^26.0.1",
+    "child_process": "^1.0.2",
     "fs": "0.0.1-security",
     "log-timestamp": "^0.3.0",
-    "mocha": "^7.2.0",
     "path": "^0.12.7"
   },
   "devDependencies": {}

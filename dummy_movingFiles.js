@@ -1,8 +1,8 @@
 const path = require('path')
 const fs = require('fs')
 require('log-timestamp');
-const downloadsFile = './Downloads';
-const downloadDir = path.join(__dirname, 'Downloads/')
+const downloadsFile = './dummy_download_file';
+const downloadDir = path.join(__dirname, 'dummy_download_file/')
 console.log(`Watching for file changes on ${downloadsFile}`);
 
 

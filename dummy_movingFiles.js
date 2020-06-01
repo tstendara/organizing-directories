@@ -14,16 +14,18 @@ const movieDir = path.join(__dirname + '/Movies/')
 const validExtension = ['app', 'ttf', 'zip', 'jpg', 'png', 'ico', 'dmg']
 
 const organizingFiles = (fileExt, curFile) => {
+    const curPath = downloadDir + curFile
+
     if(fileExt === 'app' || fileExt === 'dmg'){
-        fs.rename(downloadDir + curFile, appsDir + curFile, (() => {}))
+        fs.rename(curPath, appsDir + curFile, (() => {}))
     }else if(fileExt === 'jpg' || fileExt === 'png') {
-        fs.rename(downloadDir + curFile, picsDir + curFile, (() => {})) 
+        fs.rename(curPath, picsDir + curFile, (() => {})) 
     }else if (fileExt === 'ttf') {
-        fs.rename(downloadDir + curFile, fontsDir + curFile, (() => {}))
+        fs.rename(curPath, fontsDir + curFile, (() => {}))
     }else if(fileExt === 'ico') {
-        fs.rename(downloadDir + curFile, iconsDir + curFile, (() => {}))
+        fs.rename(curPath, iconsDir + curFile, (() => {}))
     }else if(fileExt === 'mp4' || fileExt === 'mov'){
-        fs.rename(downloadDir + curFile, movieDir + curFile, (() => {}))
+        fs.rename(curPath, movieDir + curFile, (() => {}))
     }
 }
 
